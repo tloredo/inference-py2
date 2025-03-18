@@ -8,6 +8,7 @@ Clenshaw-Curtis Quadrature Rules," BIT Num. Math., 43, 195-202
 
 Created 31 Mar 2009 by Tom Loredo
 """
+from __future__ import print_function
 
 from numpy import *
 
@@ -23,10 +24,10 @@ def ccrule(order, dft=None):
     If dft=True, DFTs of the weights for the CC rule and Fejer's 2nd rule
     are additionally returned.
     
-    The algorithm uses an FFT of size order; for very large order, setting
-    order to a power of 2 will significantly improve performance.
+    The algorithm uses an FFT of size `order`; for very large `order`, setting
+    `order` to a power of 2 will significantly improve performance.
     """
-    npts = order+1
+    npts = order + 1
     # The nodes are formally defined as x=cos(theta) for equally spaced
     # theta; reverse them so they increase in x (the rule is symmetric).
     nodes = cos(pi*arange(npts, dtype=float)/order)[::-1]
@@ -52,20 +53,6 @@ def ccrule(order, dft=None):
         return ascontiguousarray(nodes), wts, v2+g, v2
     else:
         return ascontiguousarray(nodes), wts
-
-
-def ccrule2(order):
-    """
-    Calculate nodes and weights for a Clenshaw-Curtis rule over [-1,1].
-    
-    Note that the order is the degree of the polynomial that is integrated
-    exactly; the number of nodes is order+1.  This is a closed rule, with nodes
-    at the boundaries.
-    """
-    npts = order+1
-    # The nodes are formally defined as x=cos(theta) for equally spaced
-    # theta; reverse them so they increase in x (the rule is symmetric).
-    nodes = cos(pi*arange(npts, dtype=float)/order)[::-1]
 
 
 # N=N1-1; bma=b-a;
@@ -94,7 +81,7 @@ def f1rule(order, dft=None):
     # theta; reverse them so they increase in x (the rule is symmetric).
     kvals = arange(npts, 0, -1, dtype=float)-0.5  # [npts-1/2, ..., 1/2]
     nodes = cos(pi*kvals/npts)
-    l = npts / 2  # int divide
+    l = npts // 2  # int divide
     m = npts-l
     K = arange(m, dtype=float)
     v0 = zeros(npts+1, dtype=complex)
@@ -266,8 +253,8 @@ if __name__ == '__main__':
         return 11*x**10 + x**9 + 3*x**2
     
     cc8 = ClenshawCurtis(8)
-    print 'Testing ClenshawCurtis:'
-    print 'Should be 2, 2, 4:\n', cc8.quad(f), cc8.quad(g), cc8.quad(h)
+    print('Testing ClenshawCurtis:')
+    print('Should be 2, 2, 4:\n', cc8.quad(f), cc8.quad(g), cc8.quad(h))
     
     # An order-8 example tabulated by John Burkardt
     # http://people.sc.fsu.edu/~burkardt/f_src/clenshaw_curtis/clenshaw_curtis.html
@@ -289,25 +276,25 @@ if __name__ == '__main__':
     0.2793650794,
     0.1462186492,
     0.0158730159 ])
-    print 'bcc8 quad:', sum(bcc8_wts*f(bcc8_nodes)), sum(bcc8_wts*g(bcc8_nodes)),\
-        sum(bcc8_wts*h(bcc8_nodes))
+    print('bcc8 quad:', sum(bcc8_wts*f(bcc8_nodes)), sum(bcc8_wts*g(bcc8_nodes)),\
+        sum(bcc8_wts*h(bcc8_nodes)))
     cc = ClenshawCurtis(10)
-    print 'Exact for 10th degree:', cc.quad(h)
+    print('Exact for 10th degree:', cc.quad(h))
     cc7 = ClenshawCurtis(7)
     cc7.set_range(2, 10)
-    print 'Should be 8, 992, 100999998841.6:'
-    print '  Order 7: ', cc7.quad(f), cc7.quad(g), cc7.quad(h)
+    print('Should be 8, 992, 100999998841.6:')
+    print('  Order 7: ', cc7.quad(f), cc7.quad(g), cc7.quad(h))
     cc10 = ClenshawCurtis(10, 2, 10)
-    print '  Order 10:', cc10.quad(f), cc10.quad(g), cc10.quad(h, 2, 10)
+    print('  Order 10:', cc10.quad(f), cc10.quad(g), cc10.quad(h, 2, 10))
 
-    print 'Comparing 5th order explicit and fast DFT vectors:'
+    print('Comparing 5th order explicit and fast DFT vectors:')
     n, w, dft, v2 = ccrule(10, True)
     v = cc._explicit()
-    print v2-v
-    print
+    print(v2-v)
+    print()
     
-    print 'Testing Fejer1:'
+    print('Testing Fejer1:')
     f1 = Fejer1(7)
-    print 'Should be 2, 2, 4:\n', f1.quad(f), f1.quad(g), f1.quad(h)
+    print('Should be 2, 2, 4:\n', f1.quad(f), f1.quad(g), f1.quad(h))
     f1 = Fejer1(10)
-    print 'Exact for 10th degree:', f1.quad(h)
+    print('Exact for 10th degree:', f1.quad(h))
