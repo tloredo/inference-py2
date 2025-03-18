@@ -2,15 +2,14 @@
 Analyze arrival time data from the LCM X-ray pulsar, using 
 piecewise-constant (PC) light curve models (frequentist & Bayesian)
 and the Rayleigh statistic.  A more complete PC analysis of these
-data appears in Gregory & Loredo (1996).
+data appears in Gregory & Loredo (1996):
 
-The data are X-ray photon arrival times (barycenter-corrected) from
-ROSAT observations of PSR 0540-693
+Bayesian Periodic Signal Detection: Analysis of ROSAT Observations of PSR 0540-693 - Astrophysics Data System
+https://ui.adsabs.harvard.edu/abs/1996ApJ...473.1059G/abstract
+Astrophysical Journal v.473, pp. 1059-1066, 1996 December 20
 
-BAYESIAN PERIODIC SIGNAL DETECTION: ANALYSIS OF ROSAT OBSERVATIONS OF
-PSR 0540-693
-Phil Gregory & Tom Loredo
-THE ASTROPHYSICAL JOURNAL, 473:1059-1066, 1996 December 20
+The data comprise X-ray photon arrival times (barycenter-corrected) from
+ROSAT observations of PSR 0540-693.
 """
 
 from pylab import *

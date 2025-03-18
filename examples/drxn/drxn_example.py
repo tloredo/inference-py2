@@ -1,6 +1,9 @@
 """
-Simple examples of Fisher directions --- directions with an
-associated axially symmetric error distribution.
+drxn_example - Direction uncertainty quantification example
+
+Simple examples of using the drxn.FDirection Fisher direction class
+to describe directions with an associated axially symmetric error distribution,
+given by the Fisher distribution.
 """
 
 from numpy import *

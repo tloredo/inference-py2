@@ -1,3 +1,11 @@
+"""
+onoff_hpd - Highest posterior density region for Poisson on/off problem
+
+Demonstrate use of count.onoff module for computing marginal posterior
+distributions for Poisson source intensity in the presence of an
+uncertain background, with on-source and off-source count data.
+"""
+
 from pylab import *
 #from numpy import *
 from inference.count.onoff import OnOff

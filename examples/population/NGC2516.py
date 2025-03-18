@@ -1,4 +1,6 @@
 """
+NGC2516 - Open cluster luminosity function censored data analysis example
+
 Use the Kaplan-Meier estimator to infer the luminosity function of
 X-ray emitting stars in the open cluster NGC 2516, based on detections
 and nondetections of X-ray counterparts to stellar optical counterparts
