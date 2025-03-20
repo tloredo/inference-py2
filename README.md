@@ -1,6 +1,6 @@
 # Inference package for Python-2.7
 
-The **`inference`** package is a collection of Python modules implementing a variety of methods targeting the statistical inference problems—and the statistical modeling *style*—of the physical sciences. Our own discipline is astronomy, and our choice of problems and methods most directly targets the needs of astronomers, but many tools here may be of use to other physical scientists.
+The **`inference`** package is a collection of Python modules implementing a variety of methods targeting the statistical inference problems—and the statistical modeling *style*—of the physical sciences. Our own discipline is astronomy, and our choice of problems and methods most directly targets the needs of astronomers, but tools here may be of use to other physical scientists.
 
 We adopt a narrow view of *statistical inference* for this package: we strive to provide tools that not only provide a "best" estimate or choice in a problem, but that also *quantify uncertainties*. For many scientific purposes, merely knowing what's "best" is not enough; we also need to know the range of possibilities that are "nearly as good." That's the kind of science the `inference` package aims to address.
 
@@ -18,4 +18,4 @@ This repo archives the last version of `inference` as it was maintained for Pyth
 * Clone this repo.
 * Within the `packages` folder, excectute: `python setup.py install --install-platlib DESTINATION`, where `DESTINATION` is any folder included in your Python's `sys.path` (we use the `PYTHONPATH` shell environment variable to point to a local folder holding regularly-used modules and packages).
 
-Revision and refactoring to make `inference`  compatible with Python-3 is ongoing (this version is `pip`-installable). All pure-Python modules have been ported, but `inference` includes a number of C and Fortran extension modules that require more extensive revision (due to major changes in the Python-3 and NumPy C APIs). Funding to support this work is being sought; in the meantime, the revision is being undertaken as driven by ongoing research projects.
+Revision and refactoring to make `inference`  compatible with Python-3 is ongoing (the revised version is `pip`-installable). All pure-Python modules have been ported, but `inference` includes a number of C and Fortran extension modules that require more extensive revision (due to major changes in the Python-3 and NumPy C APIs). Funding to support this work is being sought; in the meantime, the revision is being undertaken as driven by ongoing research projects.
